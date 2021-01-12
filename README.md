@@ -1,27 +1,8 @@
-# react-common
-
-> Made with create-react-common
-
-## Install
-
-```bash
-npm install --save react-common
-```
+# create-react-common
+## quick to create a react lib
 
 ## Usage
 
-```tsx
-import React, { Component } from "react";
-
-import MyComponent from "react-common";
-import "react-common/dist/index.css";
-
-class Example extends Component {
-  render() {
-    return <MyComponent />;
-  }
-}
-```
 
 ## License
 
