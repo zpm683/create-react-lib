@@ -1,32 +1,51 @@
+/**
+ *  build scripts
+ *  @todo FIXME https://github.com/developit/microbundle/issues/763
+ */
+
 const del = require("del");
-const { exec } = require("child_process");
+const { renameSync } = require("fs");
+const { execSync } = require("child_process");
 const { series, dest, src } = require("gulp");
 
 /**
- * CAN_IMPORT_FROM_ROOT
- * @var false: import {xx} from "react-common/xx"
- * @var true: import {xx} from "react-common"
+ * dir config
+ * @description
+ * if you know which dir is not change,
+ * you can set it in DO_NOT_BUILD[],
+ * this option can skip them when building!
  */
-const CAN_IMPORT_FROM_ROOT = false;
+const DIRS = {
+  DO_BUILD: ["components", "hooks", "utils"],
+  DO_NOT_BUILD: [],
+};
 
 const beforeBuild = (done) => {
-  del(["dist/*"]);
+  //clear dist dirname
+  const clearList = ["dist/package.json", "dist/README.md"];
+  for (let dirname of DIRS.DO_BUILD) {
+    clearList.push(`dist/${dirname}/**`);
+  }
+  del.sync(clearList);
   done();
 };
 
 const building = (done) => {
-  exec("microbundle-crl --no-compress --format cjs", (err, stdout, stderr) => {
-    console.log(stdout);
-    console.log(stderr);
-    done(err);
-  });
+  for (let dirname of DIRS.DO_BUILD) {
+    console.log(`building ${dirname}...`);
+    const cmdStr = `microbundle-crl src/${dirname}/index.ts --output dist/${dirname}.js --no-compress --sourcemap false --format cjs --tsconfig tsconfig.build.json"`;
+    console.log(execSync(cmdStr).toString());
+  }
+  done();
 };
 
 const afterBuild = () => {
-  if (!CAN_IMPORT_FROM_ROOT) del(["dist/index.d.ts"]);
-  return src([".publish/package.json", ".publish/README.md"]).pipe(
-    dest("dist/"),
-  );
+  // rename some files
+  for (let dirname of DIRS.DO_BUILD) {
+    renameSync(`dist/${dirname}.js`, `dist/${dirname}/index.js`);
+  }
+  // copy some files
+  return src([".publish/*"]).pipe(dest("dist/"));
 };
 
 exports.build = series(beforeBuild, building, afterBuild);

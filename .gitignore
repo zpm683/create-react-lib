@@ -5,9 +5,11 @@
 node_modules
 
 # builds
-build
 dist
+coverage
+storybook-static
 .rpt2_cache
+.eslintcache
 
 # misc
 .DS_Store
@@ -20,3 +22,4 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+yarn.lock

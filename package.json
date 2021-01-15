@@ -1,18 +1,11 @@
 {
-  "name": "create-react-common",
+  "name": "create-react-lib",
   "version": "1.0.0",
-  "description": "quick to create a react lib",
+  "description": "quick to build a hope react lib",
   "author": "zpm683",
   "license": "MIT",
-  "repository": "zpm683/create-react-common",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
-  "source": "src/index.tsx",
-  "engines": {
-    "node": ">=10"
-  },
+  "repository": "zpm683/create-react-lib",
   "scripts": {
-    "watch": "microbundle-crl watch --no-compress --format cjs",
     "build": "gulp build",
     "test": "react-scripts test --env=jsdom --coverage=true",
     "storybook": "start-storybook -p 6006",
@@ -24,16 +17,18 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.2"
+    "@material-ui/core": "4.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
+    "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.11",
     "@testing-library/jest-dom": "^5.11.7",
     "@testing-library/react": "^11.2.2",
+    "@testing-library/react-hooks": "^5.0.0",
     "@testing-library/user-event": "^12.6.0",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.17",
