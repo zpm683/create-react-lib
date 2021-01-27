@@ -7,7 +7,7 @@
   "repository": "zpm683/create-react-lib",
   "scripts": {
     "build": "gulp build",
-    "test": "react-scripts test --env=jsdom --coverage=true",
+    "test": "react-scripts test --env=jsdom --coverage=true --watchAll=false",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "publish": "cd dist && npm publish --registry https://registry.npmjs.org/"
