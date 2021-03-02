@@ -26,7 +26,7 @@ this project is
 
 - ### Outher 🎨
 
-  you can set building cmd in gulpfile.js L36
+  you can set building cmd in gulpfile.js L33
 
 - ### Bugs 🐛
   - https://github.com/developit/microbundle/issues/763
