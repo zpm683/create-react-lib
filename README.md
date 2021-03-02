@@ -30,3 +30,4 @@ this project is
 
 - ### Bugs 🐛
   - https://github.com/developit/microbundle/issues/763
+  - https://github.com/developit/microbundle/pull/799
