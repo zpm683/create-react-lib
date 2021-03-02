@@ -1,6 +1,7 @@
 /**
  *  build scripts
  *  @todo FIXME https://github.com/developit/microbundle/issues/763
+ *  @todo FIXME https://github.com/developit/microbundle/pull/799
  */
 
 const del = require("del");
@@ -29,7 +30,7 @@ const beforeBuild = (done) => {
 const building = (done) => {
   for (let dirname of DO_BUILD_DIRS) {
     console.log(`building ${dirname}...`);
-    const cmdStr = `microbundle-crl src/${dirname}/index.ts --output dist/${dirname}.js --no-compress --sourcemap false --format cjs --tsconfig tsconfig.build.json"`;
+    const cmdStr = `microbundle-crl src/${dirname}/index.ts --output dist/${dirname}.js --jsx React.createElement --no-compress --sourcemap false --format cjs --tsconfig tsconfig.build.json"`;
     console.log(execSync(cmdStr).toString());
   }
   done();
@@ -39,6 +40,8 @@ const afterBuild = () => {
   // rename some files
   for (let dirname of DO_BUILD_DIRS) {
     renameSync(`dist/${dirname}.js`, `dist/${dirname}/index.js`);
+     // FIXBUG https://github.com/developit/microbundle/pull/799/files
+    del.sync(`dist/${dirname}.js.map`);
   }
   // copy some files
   return src([".publish/*"]).pipe(dest("dist/"));
