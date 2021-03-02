@@ -5,7 +5,7 @@
 this project is
 
 - 🏗 bootstrap by creact-react-app --typescript
-- 🏭 build by microbundle-crl
+- 🏭 build by microbundle
 - 🐙 test by @testing-library
 - 📖 make doc by @storybook
 - 🛠 reconfig by gulp
