@@ -21,14 +21,14 @@ const autoSetPublishConfig = (keysToMerge, autoUpgrade = false) => {
   const packageJson = require("./package.json");
   const publishConfigPath = path.resolve(__dirname, "./.publish/package.json");
   const publishConfig = editJsonFile(publishConfigPath);
-
+  // merge package.json
   for (let key of keysToMerge) {
     const value = packageJson[key];
     if (value !== undefined) {
       publishConfig.set(key, value);
     }
   }
-
+  // upgrade version
   if (autoUpgrade) {
     const [hV, mV, lV] = publishConfig.get("version").split(".");
     if (!hV | !mV | !lV) {
@@ -38,7 +38,7 @@ const autoSetPublishConfig = (keysToMerge, autoUpgrade = false) => {
       publishConfig.set("version", nextVer);
     }
   }
-
+  // save in file
   publishConfig.save();
 };
 
