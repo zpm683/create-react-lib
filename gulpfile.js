@@ -28,16 +28,6 @@ const autoSetPublishConfig = (keysToMerge, autoUpgrade = false) => {
       publishConfig.set(key, value);
     }
   }
-  // upgrade version
-  if (autoUpgrade) {
-    const [hV, mV, lV] = publishConfig.get("version").split(".");
-    if (!hV | !mV | !lV) {
-      console.error("bad version in .publish/package.json");
-    } else {
-      const nextVer = `${hV}.${Number(mV) + 1}.${lV}`;
-      publishConfig.set("version", nextVer);
-    }
-  }
   // save in file
   publishConfig.save();
 };
@@ -72,7 +62,7 @@ const afterBuild = () => {
   }
   // auto merge package.json
   const MERGE_KEYS = ["peerDependencies", "dependencies"];
-  autoSetPublishConfig(MERGE_KEYS, true);
+  autoSetPublishConfig(MERGE_KEYS);
   // copy some files
   return src([".publish/*"]).pipe(dest("dist/"));
 };
