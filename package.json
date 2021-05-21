@@ -55,7 +55,6 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "plugin:prettier/recommended"
     ]
   }
 }
