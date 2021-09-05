@@ -47,7 +47,7 @@ const beforeBuild = (done) => {
 const building = (done) => {
   for (let dirname of DO_BUILD_DIRS) {
     console.log(`building ${dirname}...`);
-    const cmdStr = `microbundle-crl src/${dirname}/index.ts --output dist/${dirname}.js --jsx React.createElement --no-compress --sourcemap false --format cjs --tsconfig tsconfig.build.json"`;
+    const cmdStr = `microbundle src/${dirname}/index.ts --output dist/${dirname}.js --jsx React.createElement --no-compress --sourcemap false --format cjs --tsconfig tsconfig.build.json"`;
     console.log(execSync(cmdStr).toString());
   }
   done();
