@@ -1,4 +1,4 @@
-# create-react-lib
+# create-react-lib (lite)
 
 ## Quick to build your own react library！
 
@@ -8,7 +8,6 @@ this project is
 - 🏭 build by microbundle
 - 🐙 test by @testing-library
 - 📖 make doc by @storybook
-- 🛠 reconfig by gulp
 - 👀 lint code by eslint & prettier
 
 - ### How to use? 🤨
@@ -17,15 +16,10 @@ this project is
   Step2：make your components in src/\*\*  
   Step3: make your test code  
   Step4: make your story code  
-  Step5: reset publish setting in .publish folder  
   Step6: npm run build  
   Step7: npm run publish
 
   that's all, happy hacking!😎
-
-- ### Outher 🎨
-
-  you can set building cmd in gulpfile.js L33
 
 - ### Bugs 🐛
   - https://github.com/developit/microbundle/issues/763
