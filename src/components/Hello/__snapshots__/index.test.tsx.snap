@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button unit test Snapshot 1`] = `
+<div>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    Hello!
+  </p>
+</div>
+`;

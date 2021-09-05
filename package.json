@@ -1,59 +1,85 @@
 {
   "name": "create-react-lib",
   "version": "1.0.0",
-  "description": "quick to build a hope react lib",
-  "author": "zpm683",
+  "type": "module",
+  "source": "src/index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.esm.js",
+  "exports": "./dist/index.modern.js",
+  "types": "./dist/index.d.ts",
+  "description": "a react lib template",
   "license": "MIT",
   "repository": "zpm683/create-react-lib",
+  "author": "zpm683",
   "scripts": {
-    "build": "gulp build",
-    "test": "react-scripts test --env=jsdom --coverage=true --watchAll=false",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "publish": "cd dist && npm publish --registry https://registry.npmjs.org/"
+    "start": "start-storybook -p 6006",
+    "doc": "build-storybook",
+    "test": "react-scripts test --coverage=true --watchAll=true",
+    "build": "rimraf dist && microbundle --sourcemap false --no-compress --jsx React.createElement --format modern,esm,cjs --tsconfig tsconfig.release.json",
+    "release": "npm publish --registry https://registry.npmjs.org/"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@material-ui/core": "4.11.2"
+    "@material-ui/core": "^4.12.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@storybook/addon-actions": "^6.1.11",
-    "@storybook/addon-essentials": "^6.1.11",
-    "@storybook/addon-links": "^6.1.11",
-    "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.1.11",
-    "@testing-library/jest-dom": "^5.11.7",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/react-hooks": "^5.0.0",
-    "@testing-library/user-event": "^12.6.0",
-    "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.17",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.8",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.11.1",
-    "@typescript-eslint/parser": "^4.11.1",
-    "babel-loader": "8.1.0",
-    "cross-env": "^7.0.3",
-    "edit-json-file": "^1.6.0",
-    "eslint-config-react-app": "^6.0.0",
-    "gulp": "^4.0.2",
-    "microbundle": "^0.13.0",
-    "prettier": "^2.2.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "^4.0.1",
-    "typescript": "^4.1.3"
+    "microbundle": "^0.13.3",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
   },
   "jest": {
     "collectCoverageFrom": []
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
-  }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "files": [
+    "dist"
+  ]
 }

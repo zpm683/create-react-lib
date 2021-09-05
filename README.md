@@ -16,8 +16,8 @@ this project is
   Step2：make your components in src/\*\*  
   Step3: make your test code  
   Step4: make your story code  
-  Step6: npm run build  
-  Step7: npm run publish
+  Step5: npm run build  
+  Step6: npm run release
 
   that's all, happy hacking!😎
 
